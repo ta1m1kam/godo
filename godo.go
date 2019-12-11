@@ -65,7 +65,7 @@ func main() {
 			{
 				Name:    "delete",
 				Aliases: []string{"r"},
-				Usage:   "delete a task",
+				Usage:   "delete a task from the list",
 				Action: func(c *cli.Context) error {
 					deleteTask(filename, c.Args().Slice())
 					listTasks(filename)
@@ -115,7 +115,7 @@ func main() {
 			{
 				Name:    "rename",
 				Aliases: []string{"rn"},
-				Usage:   "sort tasks",
+				Usage:   "rename task on the list",
 				Action: func(c *cli.Context) error {
 					id, err := strconv.Atoi(c.Args().Get(0))
 					if err != nil {
