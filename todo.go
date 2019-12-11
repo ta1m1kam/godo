@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
+	"github.com/urfave/cli/v2"
 	"log"
 	"os"
 	"path/filepath"
-	"github.com/urfave/cli/v2"
 	"sort"
 )
 
