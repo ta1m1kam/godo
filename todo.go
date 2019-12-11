@@ -57,6 +57,16 @@ func main() {
 				Usage:   "add a task to the list",
 				Action:  func(c *cli.Context) error {
 					add(filename, c.Args().Get(0))
+
+					return nil
+				},
+			},
+			{
+				Name: "delete",
+				Aliases: []string{"r"},
+				Usage: "delete a task",
+				Action: func(c *cli.Context) error {
+					delete(filename, c.Args().Slice())
 					return nil
 				},
 			},
@@ -70,11 +80,11 @@ func main() {
 				},
 			},
 			{
-				Name: "delete",
-				Aliases: []string{"r"},
-				Usage: "delete a task",
+				Name: "undone",
+				Aliases: []string{"u"},
+				Usage: "undone a task",
 				Action: func(c *cli.Context) error {
-					delete(filename, c.Args().Slice())
+					undone(filename, c.Args().Slice())
 					return nil
 				},
 			},
