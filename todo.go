@@ -91,6 +91,16 @@ func main() {
 					return nil
 				},
 			},
+			{
+				Name: "clean",
+				Aliases: []string{"c"},
+				Usage: "clean done tasks",
+				Action: func(c *cli.Context) error {
+					clean(filename)
+					list(filename)
+					return nil
+				},
+			},
 		},
 	}
 
