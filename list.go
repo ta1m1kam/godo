@@ -32,9 +32,9 @@ func listTasks(filename string) error {
 		}
 		line := string(b)
 		if strings.HasPrefix(line, "-") {
-			fmt.Printf("\x1b[32m%s\x1b[0m %03d: %s\n",  doneMark2, n, strings.TrimSpace(line[1:]))
+			fmt.Printf("\x1b[32m%s\x1b[0m %3d: %s\n", doneMark2, n, strings.TrimSpace(line[1:]))
 		} else {
-			fmt.Printf("\x1b[31m%s\x1b[0m %03d: %s\n", doneMark1, n, strings.TrimSpace(line))
+			fmt.Printf("\x1b[31m%s\x1b[0m %3d: %s\n", doneMark1, n, strings.TrimSpace(line))
 		}
 		n++
 	}
