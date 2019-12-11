@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"github.com/urfave/cli/v2"
 	"log"
 	"os"
@@ -47,7 +46,6 @@ func main() {
 				Aliases: []string{"l"},
 				Usage:   "task on the list",
 				Action: func(c *cli.Context) error {
-					fmt.Println(filename)
 					listTasks(filename)
 					return nil
 				},
