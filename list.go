@@ -13,7 +13,7 @@ const (
 	doneMark2 = "\u2611"
 )
 
-func list(filename string) error {
+func listTasks(filename string) error {
 	f, err := os.Open(filename)
 	if err != nil {
 		return err

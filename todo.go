@@ -47,7 +47,7 @@ func main() {
 				Usage:   "task on the list",
 				Action:  func(c *cli.Context) error {
 					fmt.Println(filename)
-					list(filename)
+					listTasks(filename)
 					return nil
 				},
 			},
@@ -56,8 +56,8 @@ func main() {
 				Aliases: []string{"a"},
 				Usage:   "add a task to the list",
 				Action:  func(c *cli.Context) error {
-					add(filename, c.Args().Get(0))
-					list(filename)
+					addTask(filename, c.Args().Get(0))
+					listTasks(filename)
 					return nil
 				},
 			},
@@ -66,8 +66,8 @@ func main() {
 				Aliases: []string{"r"},
 				Usage: "delete a task",
 				Action: func(c *cli.Context) error {
-					delete(filename, c.Args().Slice())
-					list(filename)
+					deleteTask(filename, c.Args().Slice())
+					listTasks(filename)
 					return nil
 				},
 			},
@@ -76,8 +76,8 @@ func main() {
 				Aliases: []string{"d"},
 				Usage: "done a task",
 				Action: func(c *cli.Context) error {
-					done(filename, c.Args().Slice())
-					list(filename)
+					doneTask(filename, c.Args().Slice())
+					listTasks(filename)
 					return nil
 				},
 			},
@@ -86,8 +86,8 @@ func main() {
 				Aliases: []string{"u"},
 				Usage: "undone a task",
 				Action: func(c *cli.Context) error {
-					undone(filename, c.Args().Slice())
-					list(filename)
+					undoneTask(filename, c.Args().Slice())
+					listTasks(filename)
 					return nil
 				},
 			},
@@ -96,8 +96,8 @@ func main() {
 				Aliases: []string{"c"},
 				Usage: "clean done tasks",
 				Action: func(c *cli.Context) error {
-					clean(filename)
-					list(filename)
+					cleanDoneTask(filename)
+					listTasks(filename)
 					return nil
 				},
 			},
@@ -106,8 +106,8 @@ func main() {
 				Aliases: []string{"s"},
 				Usage: "sort tasks",
 				Action: func(c *cli.Context) error {
-					sort_tasks(filename)
-					list(filename)
+					sortTasks(filename)
+					listTasks(filename)
 					return nil
 				},
 			},

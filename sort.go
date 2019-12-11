@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func sort_tasks(filename string) error {
+func sortTasks(filename string) error {
 	var bottom bytes.Buffer
 	w, err := os.Create(filename + "_")
 	if err != nil {

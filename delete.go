@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func delete(filename string, args []string) error {
+func deleteTask(filename string, args []string) error {
 	if len(args) == 0 {
 		return nil
 	}

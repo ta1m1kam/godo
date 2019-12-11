@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func done(filename string, args []string) error {
+func doneTask(filename string, args []string) error {
 	if len(args) == 0 {
 		return nil
 	}

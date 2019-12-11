@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-func clean(filename string) error {
+func cleanDoneTask(filename string) error {
 	w, err := os.Create(filename + "_")
 	if err != nil {
 		return err

@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func undone(filename string, args []string) error {
+func undoneTask(filename string, args []string) error {
 	if len(args) == 0 {
 		return nil
 	}
