@@ -57,7 +57,7 @@ func main() {
 				Usage:   "add a task to the list",
 				Action:  func(c *cli.Context) error {
 					add(filename, c.Args().Get(0))
-
+					list(filename)
 					return nil
 				},
 			},
@@ -67,6 +67,7 @@ func main() {
 				Usage: "delete a task",
 				Action: func(c *cli.Context) error {
 					delete(filename, c.Args().Slice())
+					list(filename)
 					return nil
 				},
 			},
@@ -76,6 +77,7 @@ func main() {
 				Usage: "done a task",
 				Action: func(c *cli.Context) error {
 					done(filename, c.Args().Slice())
+					list(filename)
 					return nil
 				},
 			},
@@ -85,6 +87,7 @@ func main() {
 				Usage: "undone a task",
 				Action: func(c *cli.Context) error {
 					undone(filename, c.Args().Slice())
+					list(filename)
 					return nil
 				},
 			},
