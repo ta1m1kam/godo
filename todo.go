@@ -7,6 +7,7 @@ import (
 	"os"
 	"path/filepath"
 	"sort"
+	"strconv"
 )
 
 const (
@@ -17,9 +18,9 @@ func getStorageFile() string {
 	filename := ""
 	existCurTodo := false
 	curDir, err := os.Getwd()
-	if err ==  nil {
-		filename =  filepath.Join(curDir, todoFilename)
-		_, err =os.Stat(filename)
+	if err == nil {
+		filename = filepath.Join(curDir, todoFilename)
+		_, err = os.Stat(filename)
 		if err == nil {
 			existCurTodo = true
 		}
@@ -45,7 +46,7 @@ func main() {
 				Name:    "list",
 				Aliases: []string{"l"},
 				Usage:   "task on the list",
-				Action:  func(c *cli.Context) error {
+				Action: func(c *cli.Context) error {
 					fmt.Println(filename)
 					listTasks(filename)
 					return nil
@@ -55,16 +56,16 @@ func main() {
 				Name:    "add",
 				Aliases: []string{"a"},
 				Usage:   "add a task to the list",
-				Action:  func(c *cli.Context) error {
+				Action: func(c *cli.Context) error {
 					addTask(filename, c.Args().Get(0))
 					listTasks(filename)
 					return nil
 				},
 			},
 			{
-				Name: "delete",
+				Name:    "delete",
 				Aliases: []string{"r"},
-				Usage: "delete a task",
+				Usage:   "delete a task",
 				Action: func(c *cli.Context) error {
 					deleteTask(filename, c.Args().Slice())
 					listTasks(filename)
@@ -72,9 +73,9 @@ func main() {
 				},
 			},
 			{
-				Name: "done",
+				Name:    "done",
 				Aliases: []string{"d"},
-				Usage: "done a task",
+				Usage:   "done a task",
 				Action: func(c *cli.Context) error {
 					doneTask(filename, c.Args().Slice())
 					listTasks(filename)
@@ -82,9 +83,9 @@ func main() {
 				},
 			},
 			{
-				Name: "undone",
+				Name:    "undone",
 				Aliases: []string{"u"},
-				Usage: "undone a task",
+				Usage:   "undone a task",
 				Action: func(c *cli.Context) error {
 					undoneTask(filename, c.Args().Slice())
 					listTasks(filename)
@@ -92,9 +93,9 @@ func main() {
 				},
 			},
 			{
-				Name: "clean",
+				Name:    "clean",
 				Aliases: []string{"c"},
-				Usage: "clean done tasks",
+				Usage:   "clean done tasks",
 				Action: func(c *cli.Context) error {
 					cleanDoneTask(filename)
 					listTasks(filename)
@@ -102,11 +103,25 @@ func main() {
 				},
 			},
 			{
-				Name: "sort",
+				Name:    "sort",
 				Aliases: []string{"s"},
-				Usage: "sort tasks",
+				Usage:   "sort tasks",
 				Action: func(c *cli.Context) error {
 					sortTasks(filename)
+					listTasks(filename)
+					return nil
+				},
+			},
+			{
+				Name:    "rename",
+				Aliases: []string{"rn"},
+				Usage:   "sort tasks",
+				Action: func(c *cli.Context) error {
+					id, err := strconv.Atoi(c.Args().Get(0))
+					if err != nil {
+						return err
+					}
+					renameTask(filename, c.Args().Get(1), id)
 					listTasks(filename)
 					return nil
 				},
