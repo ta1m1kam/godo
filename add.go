@@ -12,7 +12,7 @@ func add(filename, args string) error {
 	}
 	defer w.Close()
 
-	_, err = fmt.Fprintf(w, args)
+	_, err = fmt.Fprintln(w, args)
 	fmt.Printf("Task added :%s\n", args)
 	return err
 }

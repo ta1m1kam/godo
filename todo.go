@@ -101,6 +101,16 @@ func main() {
 					return nil
 				},
 			},
+			{
+				Name: "sort",
+				Aliases: []string{"s"},
+				Usage: "sort tasks",
+				Action: func(c *cli.Context) error {
+					sort_tasks(filename)
+					list(filename)
+					return nil
+				},
+			},
 		},
 	}
 
